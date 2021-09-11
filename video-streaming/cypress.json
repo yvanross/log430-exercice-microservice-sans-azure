@@ -1,0 +1,4 @@
+{
+    "baseUrl": "http://localhost:4001",
+    "dbFixturesUrl": "http://localhost:4002"
+}

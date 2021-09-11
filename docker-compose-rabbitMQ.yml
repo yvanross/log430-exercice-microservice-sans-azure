@@ -1,0 +1,77 @@
+version: '3'
+services:
+  db:
+    image: mongo:4.2.8
+    container_name: db
+    ports:
+     - "4002:27017"
+    restart: always
+
+  video-storage:
+    image: video-storage
+    build: 
+      context: ./video-storage
+      dockerfile: Dockerfile
+    container_name: video-storage
+    ports:
+     - "4000:80"
+    environment:
+      - PORT=80
+    restart: "no"
+
+  video-streaming:
+    image: video-streaming
+    build: 
+      context: ./video-streaming
+      dockerfile: Dockerfile-with-rabbitMQ
+    container_name: video-streaming
+    ports:
+     - "4001:80"
+    environment:
+      - PORT=80
+      - VIDEO_STORAGE_HOST=video-storage
+      - VIDEO_STORAGE_PORT=80
+      - DBHOST=mongodb://db:27017
+      - DBNAME=video-streaming
+      - RABBIT=amqp://guest:guest@rabbit:5672
+    restart: "no"
+    volumes:
+      - /tmp/video-streaming/npm-cache:/root/.npm:z
+      - ./video-streaming/src:/usr/src/app/src:z
+      - ./video-streaming/videos:/usr/src/app/videos:z
+    depends_on:
+      - db
+      - rabbit
+
+  history:
+    image: history
+    build: 
+      context: ./history
+      dockerfile: Dockerfile-with-rabbitMQ
+    container_name: history
+    volumes:
+      - /tmp/history/npm-cache:/root/.npm:z
+      - ./history/src:/usr/src/app/src:z
+    ports:
+      - "4003:80"
+    environment:
+      - PORT=80
+      - NODE_ENV=development
+      - DBHOST=mongodb://db:27017
+      - DBNAME=history 
+      - RABBIT=amqp://guest:guest@rabbit:5672
+    restart: "no"
+    depends_on:
+      - db
+      - rabbit
+ 
+  rabbit:
+    image: rabbitmq:3.8.5-management
+    container_name: rabbit
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    expose:
+      - "5672"
+      - "15672"
+    restart: always
