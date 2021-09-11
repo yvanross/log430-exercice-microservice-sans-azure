@@ -1,40 +1,10 @@
----
-
-history: true
-progress: true
-controls: true
-controlsTutorial: true
-controlsBackArrows: faded
-center: false
-theme : beige
-transition: none
-transitionSpeed: fast
-highlightTheme: monokai
-logoImg: ../assets/logo_ets.svg
-slideNumber: true
-title: 'LOG430-01-microservice-exercice'
-margin: 0
-minScale: 1
-maxScale: 1
-rtl: false
-viewDistance: 3
-display: block
-navigationMode: 'linear'
-height: 50%
-width: 100%
-autoPlayMedia: true
-notesSeparator: "Note:"
-customTheme : "slide_themes"
-date: '`r format(Sys.time(), "%d %B, %Y")`'
-
----
 
 ### LOG430 
 #### Microservices (version local)
 
 <img src="assets/book-cover.png" alt="livre" width="377" height='500'></img>
 
---
+<hr>
 
 ## Configuration de votre ordinateur
 
@@ -48,15 +18,13 @@ date: '`r format(Sys.time(), "%d %B, %Y")`'
 - [Installer Minikube](https://minikube.sigs.k8s.io/docs/start/)
 - [Installer ngrok](https://ngrok.com/download)
 
---
-
+<hr>
 ## Un exemple d'application
 
 <!-- ![figure-1.3](./assets/figure-1.7.png){.plain}{width=75%} -->
 ![figure-9.2](./assets/figure-9.2.png =500x500){.plain}
 
---
-
+<hr>
 <!-- id="mon-premier-microservice" -->
 ## Mon premier microservice
 ```bash
@@ -66,16 +34,14 @@ npm init -y
 npm install --save express
 npm install --save-dev nodemon // live reload for fast iteration
 ```
-### Code du serveur
-<a href="video-storage/src/index.js">video-storage/src/index.js</a>[
+### Code du microservice
+<a href="video-storage/src/index.js">video-storage/src/index.js</a>
 
---
-
+<hr>
 ## Vidéo à envoyer en stream
   - Voir [SampleVideo_1280x720_1mb.mp4](assets/SampleVideo_1280x720_1mb.mp4)
 
---
-
+<hr>
 ## Test de votre microservice
 Commandes bash pour spécifier le port à utiliser
 ```
@@ -97,9 +63,8 @@ http://localhost:3000/video?path=SampleVideo_1280x720_1mb.mp4  # pour voir votre
 
 Félicitation vous venez d'exécuter votre premier microservice
 
---
-
-## configuration de Docker pour video-storage
+<hr>
+## Configuration de Docker pour video-storage
 [video-storage/Dockerfile](video-storage/Dockerfile)
 
 ## Docker build/run command
@@ -110,9 +75,8 @@ docker run -p 3000:3000 --env PORT=3000 video-storage
 # docker run -d -p 3000:3000 video-storage  # en mode détaché
 ```
 
---
-
-Tester votre microservice video-storage avec Chrome
+<hr>
+## Tester votre microservice video-storage avec Chrome
 ```
 # Ne fonctionne pas avec Safari
 http://localhost:3000/video?path=SampleVideo_1280x720_1mb.mp4  # pour voir votre vidéo.
@@ -120,8 +84,7 @@ http://localhost:3000/video?path=SampleVideo_1280x720_1mb.mp4  # pour voir votre
 
 Félicitation vous avez un premier microservice déployé avec docker
 
---
-
+<hr>
 ## Nettoyer votre désordre
 ```
 docker ps # List all containers (running and stopped)
@@ -130,8 +93,7 @@ docker rm <container-id>  #remove a container locally
 docker rmi <your-image-id> --force   # Remove a particular image  
 ```
 
---
-
+<hr>
 ### Créer le microservice video-streaming
 
 ```
@@ -139,8 +101,7 @@ cd video-streaming
 npm install # installer tout les autres dépendances
 ```
 
---
-
+<hr>
 #### Création de plusieur microservices avec docker-compose
 [docker-compose.yml](docker-compose.yml)
 
@@ -157,8 +118,7 @@ http://localhost:4001/video?path=SampleVideo_1280x720_1mb.mp4
 ctrl-c # (une seule fois) pour terminer l'instance docker-compose
 ```
 
---
-
+<hr>
 
 
 ## Ajout d'une base de donnée MongoDB
@@ -167,8 +127,7 @@ ctrl-c # (une seule fois) pour terminer l'instance docker-compose
 docker-compose  -f docker-compose-db.yml down && docker-compose -f docker-compose-db.yml up --build  # start mongo db on port 4000
 ```
 
---
-
+<hr>
 ### Ajout de données 
 :::block {style=font-size:0.8em}
 - Ouvrir Robo 3T et connectez vous à localhost:4002
@@ -181,8 +140,7 @@ docker-compose  -f docker-compose-db.yml down && docker-compose -f docker-compos
 - Insérer ce document dans la collection [videos.json](/fixtures/videos.json)
 :::
 
---
-
+<hr>
 
 ### Afficher la vidéo à partir de son index
 ```
@@ -190,8 +148,7 @@ http://localhost:4001/video?id=5d9e690ad76fe06a3d7ae416
 
 ```
 
---
-
+<hr>
 ## Création du microservice History
 ```
 cd history
@@ -199,8 +156,7 @@ npm install
 
 ```
 
---
-
+<hr>
 ## Activation du live reload (déja fait)
 - Pour activer le live reload
   - volumes dans docker-compose-history.yml permet de créer un lien entre Docker et les fichiers sources. Une mise à jours d'un fichier local mettra les sources de docker à jour. 
@@ -209,8 +165,7 @@ npm install
   - Enlever COPY ./src ./src
   - Remplacer CMD npm start -> CMD npm run start:dev
 
---
-
+<hr>
 ## Test du live reload
 
 ```
@@ -218,8 +173,7 @@ docker-compose -f docker-compose-history.yml down && docker-compose -f docker-co
 ```
 - Modifier "Hello word" dans history/src/index.js et regarder la console.  
 
---
-
+<hr>
 ### Vérification de la messagerie directe 
 Vérification du bon fonctionnement de history
 
@@ -229,8 +183,7 @@ http://localhost:4002/video?id=5d9e690ad76fe06a3d7ae416
 ```
 Un URL est appelé sur le microservice History
 
---
-
+<hr>
 ### Vérifier messages dans MongoDB
 Avec l'application Robot 3T{align=left}
   - database: history
@@ -241,8 +194,7 @@ Avec l'application Robot 3T{align=left}
 
 Note: Message sent with HTTP requests have direct responses. We can know immediately if the handling of the message succeeded or failed.
 
---
-
+<hr>
 ### Messagerie indirect avec rabbitMQ
 
 Démarrer votre server RabbitMQ{align=left}
@@ -254,8 +206,7 @@ docker-compose -f docker-compose-rabbitMQ.yml down &&  docker-compose -f docker-
     - username: guest
     - password: guest
 
---
-
+<hr>
 ### Diffusion d'un message à History par RabbitMQ
 
 ```
@@ -269,8 +220,7 @@ Acknowledging message was handled.
 Vérifier History pour le message avec 5d9e690ad76fe06a3d7ae416
 Félicitation on passe à une nouvelle étape...
 
---
-
+<hr>
 ## Tout terminer
 ```
 docker stop $(docker ps -a -q) # stop all running container
@@ -280,13 +230,12 @@ docker container list
 
 ```
 
---
-
+<hr>
 
 ### Gérer votre application de microservices
-Le docker run à créer un container à partir de votre image docker{align=left}
+Le docker run à créer un container à partir de votre image docker
 
-Dans un nouveau terminal:{align=left}
+Dans un nouveau terminal 
 ```
 docker-compose ps # Show list of our running containers
 docker-compose stop # shutting down the application. 
@@ -297,12 +246,10 @@ docker ps # List all containers (runnging and stopped)
 docker image remove <image-id>  --force # Remove docker image
 ``` 
 
----
-
+<hr>
 ## Tout les script suivant n'ont pas été testés.
 
---
-
+<hr>
 ### test unitaire avec jest
 ```
 # jest was already installed with
@@ -311,15 +258,13 @@ docker image remove <image-id>  --force # Remove docker image
 # npm install --prefix ./video-streaming jest --save-dev
 ```
 
---
-
+<hr>
 ## Tests avec un base de données
 - voir
   - test/indexMockedDB.test.js pour un exemple de test unitaire
   - test/indexRealDB.test.js pour un exemple de test d'intégration
 
---
-
+<hr>
 ### end-to-end testing
 #### intégration de cypress
 ```
@@ -341,21 +286,18 @@ npm run test:cypress:run
 docker-compose down
 ```
 
---
-
+<hr>
 ## Exemple de test avec cypress
 - voir video-streaming/cypress pour des examples de test
 
 Lorsque tout les microservices sont testés on peut passer au déploiement automatisé
 
---
-
+<hr>
 ## Debug db et Rabbit
 - db and rabbit contstantly restarting
   - docker volume rm $(docker volume ls -qf dangling=true)
 
---
-
+<hr>
 ### Créer un cluster kubernetes localement avec minikube
 https://medium.com/skillshare-team/from-docker-compose-to-minikube-d94cbe97acda
 ```
@@ -371,9 +313,9 @@ kubectl expose deployment video-streaming --type=NodePort --port=8080
 kubectl get services video-streaming
 minikube service video-streaming
 kubectl port-forward service/video-streaming 7080:8080
+```
 
---
-
+<hr>
 ### Créer un cluster kubernetes localement avec kind
 ```
 kind create cluster --config kind-config.yaml # création du cluster nommé kind
