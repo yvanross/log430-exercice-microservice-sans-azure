@@ -73,7 +73,7 @@ Félicitation vous venez d'exécuter votre premier microservice
 
 ## Docker build/run command
 ```
-docker build -t video-storage= --file Dockerfile .
+docker build -t video-storage --file Dockerfile .
 docker image list
 docker run -p 3000:3000 --env PORT=3000 video-storage
 # docker run -d -p 3000:3000 video-storage  # en mode détaché
