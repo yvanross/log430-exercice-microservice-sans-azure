@@ -1,6 +1,6 @@
 
 ### LOG430 
-#### Microservices (version local)
+#### Microservices (version local sans l'utilisation d'azure)
 
 <img src="assets/book-cover.png" alt="livre" width="377" height='500'></img>
 
@@ -13,9 +13,9 @@
 - [Installer Robo 3T](https://robomongo.org )
 - [Installer Docker](https://www.docker.com/products/docker-desktop)
 - [Installer Docker-compose](https://docs.docker.com/get-started/08_using_compose/)
-- [Installer Kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [Installer Kink](https://kind.sigs.k8s.io/docs/user/quick-start/)
-- [Installer Minikube](https://minikube.sigs.k8s.io/docs/start/)
+- <s>[Installer Kubectl](https://kubernetes.io/docs/tasks/tools/)</s>
+- <s>[Installer Kink](https://kind.sigs.k8s.io/docs/user/quick-start/)</s>
+- <s>[Installer Minikube](https://minikube.sigs.k8s.io/docs/start/)</s>
 - [Installer ngrok](https://ngrok.com/download)
 
 <hr>
