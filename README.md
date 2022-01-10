@@ -17,7 +17,10 @@
 - <s>[Installer Kink](https://kind.sigs.k8s.io/docs/user/quick-start/)</s>
 - <s>[Installer Minikube](https://minikube.sigs.k8s.io/docs/start/)</s>
 - [Installer ngrok](https://ngrok.com/download)
-
+- Récupérer les sources de l'exercice
+```code
+git clone https://github.com/yvanross/log430-exercice-microservice-sans-azure
+```
 <hr>
 
 ## Un exemple d'application
@@ -30,7 +33,7 @@
 <!-- id="mon-premier-microservice" -->
 ## Mon premier microservice
 ```bash
-cd microservice-exercice # base application directory that contain all microservices project
+cd log430-exercice-microservice-sans-azure # base application directory that contain all microservices project
 cd video-storage
 npm init -y
 npm install --save express
@@ -351,3 +354,23 @@ docker ps # list running and stopped containers
 docker exec -it kind-control-plane crictl images # list container in kind kubernetes cluster
 
 ```
+## Service discovery
+Pour les équipes qui vont faire le microservice [LOG430ServiceDiscovery](https://www.getambassador.io/resources/service-discovery-microservices/)
+
+## Tutorial
+- [Docker](https://developer.ibm.com/tutorials/building-docker-images-locally-and-in-cloud/)
+
+## Communication asynchrone
+RabbitMq
+MQTT
+[Redis microservices for dummies](https://lp.redislabs.com/rs/915-NFD-128/images/Redis-Microservices-for-Dummies.pdf?mkt_tok=OTE1LU5GRC0xMjgAAAF-vyYQJXgjTmXzGQuprsiexZb9-1laAbeREPsHW5cyhlrHEpY9i-R3HfUbIgcCk-f850HpnJ6l-wsKVoG5QxeyBi6Pe6Z7cPHP1v0bCnjSPp4rFg)
+
+## Kubernetes
+[Kubernetes 101: Labs designed to help you understand Kubernetes](https://developer.ibm.com/tutorials/kubernetes-101-labs/)
+[Options for running Kubernetes locally](https://developer.ibm.com/blogs/options-to-run-kubernetes-locally/)
+[YAML basics in Kubernetes](https://developer.ibm.com/tutorials/yaml-basics-and-usage-in-kubernetes/)
+
+
+## API'S
+[RapidApi](https://docs.rapidapi.com/docs/what-is-rapidapi)
+
