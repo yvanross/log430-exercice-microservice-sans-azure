@@ -39,6 +39,10 @@ app.get("/video", (req, res) => {
     });
 });
 
+app.get("/", (req, res) => {
+    res.send("use: localhost:4000/video?path=SampleVideo_1280x720_1mb.mp4");
+  });
+  
 //
 // Starts the HTTP server.
 //

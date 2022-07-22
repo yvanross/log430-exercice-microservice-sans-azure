@@ -1,0 +1,20 @@
+version: '3'
+services:
+  video-storage:
+    image: video-storage
+    init: true
+    ports:
+      - "4000:4000"
+    networks:
+      - internal_video_storage
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: video-storage
+    environment:
+      - SELF_URL=http://${SELF_PATH_1:-127.0.0.1}
+      - PORT=4000
+    restart: "no"
+
+networks:
+  internal_video_storage:

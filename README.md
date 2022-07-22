@@ -64,7 +64,6 @@ npm run start:dev # utilise nodemon pour faire un live reload
 
 Tester votre microservice avec Chrome
 ```
-# Ne fonctionne pas avec Safari
 http://localhost:3000/video?path=SampleVideo_1280x720_1mb.mp4  # pour voir votre vidéo.
 ```
 
@@ -84,15 +83,18 @@ docker run -p 3000:3000 --env PORT=3000 video-storage
 
 <hr>
 
-## Tester votre microservice video-storage avec Chrome
+## Tester votre microservice video-storage localement
 ```
-# Ne fonctionne pas avec Safari
 http://localhost:3000/video?path=SampleVideo_1280x720_1mb.mp4  # pour voir votre vidéo.
 ```
 
 Félicitation vous avez un premier microservice déployé avec docker
 
 <hr>
+
+# Tester votre microservice sur portainer
+tar -zcvf video-storage.tar ./video-storage/
+docker network create "traefik_public"
 
 ## Nettoyer votre désordre
 ```
