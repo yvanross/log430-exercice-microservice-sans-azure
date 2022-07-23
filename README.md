@@ -75,6 +75,7 @@ Félicitation vous venez d'exécuter votre premier microservice
 
 ## Docker build/run command
 ```
+cd video-storage
 docker build -t video-storage --file Dockerfile .
 docker image list
 docker run -p 3000:3000 --env PORT=3000 video-storage
@@ -93,8 +94,9 @@ Félicitation vous avez un premier microservice déployé avec docker
 <hr>
 
 # Tester votre microservice sur portainer
-tar -zcvf video-storage.tar ./video-storage/
 docker network create "traefik_public"
+
+docker save video-storate > video-storage.tar
 
 ## Nettoyer votre désordre
 ```

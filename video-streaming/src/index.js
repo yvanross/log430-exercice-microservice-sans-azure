@@ -26,11 +26,14 @@ if (!process.env.VIDEO_STORAGE_PORT) {
 const PORT = process.env.PORT;
 const VIDEO_STORAGE_HOST = process.env.VIDEO_STORAGE_HOST;
 const VIDEO_STORAGE_PORT = parseInt(process.env.VIDEO_STORAGE_PORT);
-console.log(`Forwarding video requests to ${VIDEO_STORAGE_HOST}:${VIDEO_STORAGE_PORT}.`);
+console.log(`Gateway forwarding video requests to ${VIDEO_STORAGE_HOST}:${VIDEO_STORAGE_PORT}.`);
 
 //
 // Registers a HTTP GET route for video streaming.
 //
+app.get("/", (req, res) => {
+    res.send("video-streaming: localhost:"+ PORT + "/video?path=SampleVideo_1280x720_1mb.mp4");
+  });
 app.get("/video", (req, res) => {
   console.log(req.query.path);
   const videoPath = "/video?path=" + req.query.path;
