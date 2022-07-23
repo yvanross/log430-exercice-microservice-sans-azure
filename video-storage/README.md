@@ -24,6 +24,7 @@ docker save video-storage -o video-storage.tar
 ```
 
 Voir les vidéos:
-portainer-1: https://youtu.be/L0ak_Jsi3W8
-portainer-2: https://youtu.be/VSxIHf0ZuF0
+portainer-1: https://youtu.be/L0ak_Jsi3W8  Test en mode local
+portainer-2: https://youtu.be/VSxIHf0ZuF0  Deployement sur portainer
+portainer-3: https://youtu.be/1vDqsMESGyI  Docker-compose sur portainer
 
